@@ -1,8 +1,8 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-let comScore2 = 0;
-let useScore2 = 0;
+// let comScore2 = 0;
+// let useScore2 = 0;
 
 const ExDiceGame = () => {
 
@@ -29,28 +29,38 @@ const ExDiceGame = () => {
 
         if(comRanNum > userRanNum){
             setComScore(comScore+1)
-            comScore2 = comScore+1;
         }
         else if(userRanNum>comRanNum){
             setUserScore(userScore+1)
-            useScore2 = userScore+1
         }
-        ////
+        ////useEffect 이용해서 만들어주세요!
 
-        if(comScore2==10){
-            setResult('COM WIN')
-        }
-        else if(useScore2==10){
-            setResult('USER WIN')
-        }
+
         
     }
+    //Mount + Update
+    useEffect(()=>{
+      if(comScore!=0){
+      for(;;){
+
+      }
+      let test=""
+      console.log("Test")
+        if(comScore==10){
+            setResult('COM WIN')
+        }
+        else if(userScore==10){
+            setResult('USER WIN')
+        }
+      }
+     
+    }, [comScore, userScore])
     
     // let num=6
   return (
    <div>
       <h1>DICE GAME</h1>
-      <button onClick={startGame}>Start</button>
+      <button  onClick={startGame}>Start</button>
 
       <div >
         <img src={'./src/img/dice'+comNum+'.png'}></img>
